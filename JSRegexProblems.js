@@ -51,3 +51,28 @@ Check for A400088 – this should fail
     }
     validatePINCode();
 }
+
+
+/* UC 3: Restrict the PIN code from taking alphabets or special characters at the End.
+Check for 400088B – this should fail
+*/
+{
+    let validatePINCode = () => {
+        console.log("\n***** UC3 *****");
+        try {
+            let pincode = "400088B"//prompt("Enter pincode:");
+            //regex pattern for pincode not allowing spaces
+            let pincodePattern = new RegExp('^[1-9]{1}[0-9]{5,}$');
+            //test pincode with pattern
+            if (pincodePattern.test(pincode))
+                console.log('Pincode is valid');
+            else
+                throw 'Error! Pincode is not valid';
+        }
+        catch (e) {
+            //catch the error and print it
+            console.error(e);
+        }
+    }
+    validatePINCode();
+}
