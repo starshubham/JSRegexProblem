@@ -76,3 +76,28 @@ Check for 400088B – this should fail
     }
     validatePINCode();
 }
+
+
+/* UC 4: Make sure 400 088 is also valid along with 400088
+*/
+{
+    let validatePINCode = () => {
+        console.log("\n***** UC4 *****");
+        try {
+            const prompt=require("prompt-sync")();  // For Taking input from user
+            let pincode = prompt("Enter pincode: ");// string ex- 400 088
+            //regex pattern for pincode not allowing spaces
+            let pincodePattern = new RegExp('^[1-9]{1}[0-9]{2}\\s?[0-9]{3}$');
+            //test pincode with pattern
+            if (pincodePattern.test(pincode))
+                console.log('Pincode is valid');
+            else
+                throw 'Error! Pincode is not valid';
+        }
+        catch (e) {
+            //catch the error and print it
+            console.error(e);
+        }
+    }
+    validatePINCode();
+}
