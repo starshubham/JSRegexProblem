@@ -15,9 +15,9 @@ by India Post. Create a regex pattern to validate PIN Code UC 1 PIN code 400088
             let pincodePattern = new RegExp('^[1-9]{1}[0-9]{5}$');
             //test pincode with pattern
             if (pincodePattern.test(pincode))
-                console.log('Pincode is valid');
+                console.log('Pincode is valid.');
             else
-                throw 'Error! Pincode is not valid';
+                throw 'Error! Pincode is not valid.';
         }
         catch (e) {
             //catch the error and print it
@@ -40,9 +40,9 @@ Check for A400088 – this should fail
             let pincodePattern = new RegExp('^[1-9]{1}[0-9]{5,}$');
             //test pincode with pattern
             if (pincodePattern.test(pincode))
-                console.log('Pincode is valid');
+                console.log('Pincode is valid.');
             else
-                throw 'Error! Pincode is not valid';
+                throw 'Error! Pincode is not valid.';
         }
         catch (e) {
             //catch the error and print it
@@ -65,9 +65,9 @@ Check for 400088B – this should fail
             let pincodePattern = new RegExp('^[1-9]{1}[0-9]{5,}$');
             //test pincode with pattern
             if (pincodePattern.test(pincode))
-                console.log('Pincode is valid');
+                console.log('Pincode is valid.');
             else
-                throw 'Error! Pincode is not valid';
+                throw 'Error! Pincode is not valid.';
         }
         catch (e) {
             //catch the error and print it
@@ -90,9 +90,9 @@ Check for 400088B – this should fail
             let pincodePattern = new RegExp('^[1-9]{1}[0-9]{2}\\s?[0-9]{3}$');
             //test pincode with pattern
             if (pincodePattern.test(pincode))
-                console.log('Pincode is valid');
+                console.log('Pincode is valid.');
             else
-                throw 'Error! Pincode is not valid';
+                throw 'Error! Pincode is not valid.';
         }
         catch (e) {
             //catch the error and print it
@@ -118,9 +118,9 @@ const prompt=require("prompt-sync")();  // For Taking input from user
         let emailPattern = new RegExp("^(abc).?[a-z]{3,}[@][a-z]{5,}.?[a-z]{2,}$");
         //test email id with pattern
         if (emailPattern.test(emailId))
-            console.log('Email id is valid');
+            console.log('Email id is valid.');
         else
-            throw 'Error! Email id is not valid';
+            throw 'Error! Email id is not valid.';
     }
     catch (e) {
         //catch the error and print it
@@ -139,9 +139,9 @@ const prompt=require("prompt-sync")();  // For Taking input from user
         let emailPattern = new RegExp("^(abc).?[a-z]{3,}[@](bridgelabz).?[a-z]{2,}$");
         //test email id with pattern
         if (emailPattern.test(emailId))
-            console.log('Email id is valid');
+            console.log('Email id is valid.');
         else
-            throw 'Error! Email id is not valid';
+            throw 'Error! Email id is not valid.';
     }
     catch (e) {
         //catch the error and print it
@@ -160,9 +160,9 @@ const prompt=require("prompt-sync")();  // For Taking input from user
         let emailPattern = new RegExp("^(abc).?[a-z]{3,}[@](bridgelabz).?(co).?[a-z]{2,}$");
         //test email id with pattern
         if (emailPattern.test(emailId))
-            console.log('Email id is valid');
+            console.log('Email id is valid.');
         else
-            throw 'Error! Email id is not valid';
+            throw 'Error! Email id is not valid.';
     }
     catch (e) {
         //catch the error and print it
@@ -183,12 +183,65 @@ NOTE: make sure only following are valid special characters _,+,-,. proceeding t
         let emailPattern = new RegExp("^(abc)[\. _ + -]{1}[a-z]{3,}[@](bridgelabz).?(co).?[a-z]{2,}$");
         //test email id with pattern
         if (emailPattern.test(emailId))
-            console.log('Email id is valid');
+            console.log('Email id is valid.');
         else
-            throw 'Error! Email id is not valid';
+            throw 'Error! Email id is not valid.';
     }
     catch (e) {
         //catch the error and print it
         console.error(e);
     }
+}
+
+
+/* UC 9: Finally lets close the expression with supporting optional parts.
+Note: Top Level Domains (TLD) in the last part is the optional country code and its 2 characters only.
+
+Sample Emails to Test
+• A. Valid Emails
+• 1. abc@yahoo.com,
+• 2. abc-100@yahoo.com,
+• 3. abc.100@yahoo.com
+• 2. abc111@abc.com,
+• 4. abc-100@abc.net,
+• 5. abc.100@abc.com.au
+• 6. abc@1.com,
+• 7. abc@gmail.com.com
+• 8. abc+100@gmail.com
+
+B. Invalid Emails (TLD - Top Level Domains)
+1. abc – must contains “@” symbol
+2. abc@.com.my – tld can not start with dot “.”
+3. abc123@gmail.a – “.a” is not a valid tld, last tld must contains at least two characters
+4. abc123@.com – tld can not start with dot “.”
+5. abc123@.com.com – tld can not start with dot “.”
+6. .abc@abc.com – email’s 1st character can not start with “.”
+7. abc()*@gmail.com – email’s is only allow character, digit, underscore and dash
+8. abc@%*.com – email’s tld is only allow character and digit
+9. abc..2002@gmail.com – double dots “.” are not allow
+10. abc.@gmail.com – email’s last character can not end with dot “.”
+11. abc@abc@gmail.com – double “@” is not allow
+12. abc@gmail.com.1a -email’s tld which has two characters can not contains digit
+13. abc@gmail.com.aa.au - cannont have multiple email’s tld
+*/
+
+{
+    console.log("\n***** UC9 Validate all given examples *****");
+    while(true) {
+        let emailId = prompt("Enter your email id: ");  
+
+        try {
+            //regex pattern for email id
+            let emailPattern = new RegExp("^[0-9A-Za-z]+([._+-][0-9A-Za-z]+)*[@][0-9A-Za-z]+.[a-zA-Z]{2,3}(.[a-zA-Z]{2,3})?$");
+            //test email id with pattern
+            if (emailPattern.test(emailId))
+                console.log('Email id is valid.');
+            else
+                throw 'Error! Email id is not valid.';
+        }
+        catch (e) {
+            //catch the error and print it
+            console.error(e);
+        }
+    }   
 }
