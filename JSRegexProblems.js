@@ -111,11 +111,32 @@ To begin with lets validate the mandatory part and start with abc
 const prompt=require("prompt-sync")();  // For Taking input from user
 {
     console.log("\n***** UC5 *****");
-    let emailId = prompt("Enter your email id: ");  // ex:- abc.xyz@bridgelabz.co.in 
+    let emailId = prompt("Enter your email id: ");  // ex:- abc.xyz@gmail.com 
 
     try {
         //regex pattern for email id
-        let emailPattern = new RegExp("^(abc).?[a-z]{3,}[@](bridgelabz).?(co).?[a-z]{2,}$");
+        let emailPattern = new RegExp("^(abc).?[a-z]{3,}[@][a-z]{5,}.?[a-z]{2,}$");
+        //test email id with pattern
+        if (emailPattern.test(emailId))
+            console.log('Email id is valid');
+        else
+            throw 'Error! Email id is not valid';
+    }
+    catch (e) {
+        //catch the error and print it
+        console.error(e);
+    }
+}
+
+
+/* UC 6: Ensure @ and validate the mandatory 2nd part i.e. bridgelabz */
+{
+    console.log("\n***** UC6 *****");
+    let emailId = prompt("Enter your email id: ");  // ex:- abc.xyz@bridgelabz.com 
+
+    try {
+        //regex pattern for email id
+        let emailPattern = new RegExp("^(abc).?[a-z]{3,}[@](bridgelabz).?[a-z]{2,}$");
         //test email id with pattern
         if (emailPattern.test(emailId))
             console.log('Email id is valid');
