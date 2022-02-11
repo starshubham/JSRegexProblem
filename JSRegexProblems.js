@@ -101,3 +101,29 @@ Check for 400088B – this should fail
     }
     validatePINCode();
 }
+
+
+/* UC 5:- Validate Email address with a regex. The email consists of minimum 3 and optional 2 more
+parts with mandatory @ and .    ex:- abc.xyz@bridgelabz.co.in 
+Here abc, bridgelabz and co are mandatory and the remaining 2 are optional
+To begin with lets validate the mandatory part and start with abc
+*/
+const prompt=require("prompt-sync")();  // For Taking input from user
+{
+    console.log("\n***** UC5 *****");
+    let emailId = prompt("Enter your email id: ");  // ex:- abc.xyz@bridgelabz.co.in 
+
+    try {
+        //regex pattern for email id
+        let emailPattern = new RegExp("^(abc).?[a-z]{3,}[@](bridgelabz).?(co).?[a-z]{2,}$");
+        //test email id with pattern
+        if (emailPattern.test(emailId))
+            console.log('Email id is valid');
+        else
+            throw 'Error! Email id is not valid';
+    }
+    catch (e) {
+        //catch the error and print it
+        console.error(e);
+    }
+}
