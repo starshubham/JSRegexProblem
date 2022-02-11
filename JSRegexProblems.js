@@ -26,3 +26,4 @@ by India Post. Create a regex pattern to validate PIN Code UC 1 PIN code 400088
     }
     validateWithoutSpace();
 }
+
